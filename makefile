@@ -1,2 +1,2 @@
 all:
-	sudo gcc -O3 -o helloWorld_c.cgi helloWorld.c
+	sudo gcc -O3 -o switch_c.cgi switch.c
