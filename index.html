@@ -1,0 +1,99 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>IoT Switch</title>
+        <meta name="description" content="A IoT switch I created. It switches on and off a power outlet.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            body{
+                padding:0;
+                margin:0;
+                font-size:16px;
+                background-color:#6D6D6D;
+            }
+            input#on, input#off{
+                width:100%;
+                height:100vh;
+                cursor:pointer;
+                margin:0;
+                padding:0;
+                font-size:2em;
+                font-weight:bold;
+                border-radius:50px;
+            }
+            input#on:disabled, input#off:disabled{
+                background-color:red;
+            }
+            input#on{
+                background-color:white;
+                color:black;
+                border:1px solid black;
+            }
+            input#off{
+                background-color:black;
+                color:white;
+                border:1px solid white;
+            }
+        </style>
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <section>
+            <form method="GET" action="/switch_1/cgi-bin/on">
+                <input type="submit" id="on" value="On"/>
+            </form>
+            <form method="GET" action="/switch_1/cgi-bin/off">
+                <input type="submit" id="off" value="Off"/>
+            </form>
+        </section>
+
+        <script>
+            'use strict';
+
+            var onButton = document.querySelector('#on'),
+                offButton = document.querySelector('#off'),
+                pageForms = document.querySelectorAll('form');
+            
+            offButton.style.display = 'none';
+
+            function submit(url, callBack){
+                var oReq = new XMLHttpRequest();
+
+                oReq.addEventListener('load', reqListener);
+                oReq.open('GET', url);
+                oReq.send();
+                
+                function reqListener(e){
+                    callBack(e, oReq);
+                    console.log(JSON.parse(oReq.response));
+                }
+            }
+
+            pageForms.forEach(function(form){
+                form.addEventListener('submit', function(e) {
+                    var button = form.querySelector('input');
+
+                    button.setAttribute('disabled', 'disabled');
+                    submit(form.action, function(reqEvent, oReq){
+                        button.removeAttribute('disabled');
+                        button.style.display = 'none';
+
+                        if(button === onButton){
+                            offButton.style.display = 'initial';
+                        }else if(button === offButton){
+                            onButton.style.display = 'initial';
+                        }
+                    });
+
+                    e.preventDefault();
+                    return false
+                });
+            });
+        </script>
+    </body>
+</html>
