@@ -24,7 +24,8 @@
                 border-radius:50px;
             }
             input#on:disabled, input#off:disabled{
-                background-color:red;
+                background-color:gray;
+                cursor:wait;
             }
             input#on{
                 background-color:white;
@@ -44,10 +45,10 @@
         <![endif]-->
         
         <section>
-            <form method="GET" action="/switch_1/cgi-bin/on">
+            <form method="GET" action="/switch_1/cgi-bin/off">
                 <input type="submit" id="on" value="On"/>
             </form>
-            <form method="GET" action="/switch_1/cgi-bin/off">
+            <form method="GET" action="/switch_1/cgi-bin/on">
                 <input type="submit" id="off" value="Off"/>
             </form>
         </section>
