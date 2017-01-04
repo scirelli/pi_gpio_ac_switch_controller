@@ -1,6 +1,6 @@
 #!/bin/bash
 
-msg=`echo 'www-data' | sudo -ES /var/www/html/cgi-bin/on >/dev/null 2>&1`
+msg=`echo 'www-data' | sudo -ES /var/www/html/cgi-bin/on.cgi >/dev/null 2>&1`
 ecode=$?
 echo "Cache-Control: no-cache"
 echo "pragma: no-cache"
