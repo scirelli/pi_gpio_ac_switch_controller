@@ -1,6 +1,10 @@
 #!/bin/bash
+#msg=`echo 'www-data' | sudo -ES /var/www/html/cgi-bin/off.cgi >/dev/null 2>&1`
 
-msg=`echo 'www-data' | sudo -ES /var/www/html/cgi-bin/off.cgi >/dev/null 2>&1`
+OFF=0
+PIN=0
+gpio mode $PIN down
+gpio write $PIN $OFF
 ecode=$?
 echo "Cache-Control: no-cache"
 echo "pragma: no-cache"
