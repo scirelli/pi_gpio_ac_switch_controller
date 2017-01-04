@@ -1,0 +1,11 @@
+#!/bin/bash
+
+msg=`echo 'www-data' | sudo -ES /var/www/html/cgi-bin/on >/dev/null 2>&1`
+ecode=$?
+echo "Cache-Control: no-cache"
+echo "pragma: no-cache"
+echo "HTTP/1.0 200 OK"
+echo "Content-Type: application/json"
+echo "Content-Length: 32"
+echo
+echo "{\"success\":true, \"exitCode\":\"$ecode\"}"
