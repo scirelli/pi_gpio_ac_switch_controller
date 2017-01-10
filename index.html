@@ -75,7 +75,7 @@
                 }
             }
 
-            pageForms.forEach(function(form){
+            Array.prototype.forEach.call(pageForms, function(form){
                 form.addEventListener('submit', function(e) {
                     var button = form.querySelector('input');
 
