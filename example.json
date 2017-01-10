@@ -1,0 +1,37 @@
+{
+"id": "d3585920-1f2a-4043-a3be-ef067dafefff",
+"timestamp": "2017-01-08T15:46:21.853Z",
+"result": {
+"source": "agent",
+"resolvedQuery": "turn bedroom light on",
+"action": "device.action",
+"actionIncomplete": false,
+"parameters": {
+"action": "on",
+"device": "light",
+"location": "bedroom"
+},
+"contexts": [],
+"metadata": {
+"intentId": "341955da-b7b0-4d23-b1e0-deb119fa6f92",
+"webhookUsed": "false",
+"webhookForSlotFillingUsed": "false",
+"intentName": "Control Master Bedroom"
+},
+"fulfillment": {
+"speech": "The light in bedroom is now on",
+"messages": [
+{
+"type": 0,
+"speech": "The light in bedroom is now on"
+}
+]
+},
+"score": 1
+},
+"status": {
+"code": 200,
+"errorType": "success"
+},
+"sessionId": "3b2f90d9-b74d-4b95-ac13-0cb4e3c3ca1f"
+}
